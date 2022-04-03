@@ -6,6 +6,8 @@ const RegisterPage: NextPageCustom = () => {
   return <Register />
 }
 
-RegisterPage.getLayout = FullPageForm
+RegisterPage.getLayout = function getLayout(page: React.ReactNode) {
+  return <FullPageForm>{page}</FullPageForm>
+}
 
 export default RegisterPage
