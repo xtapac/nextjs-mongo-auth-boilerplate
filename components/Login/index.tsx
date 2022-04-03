@@ -34,13 +34,12 @@ const Login: NextPage = () => {
 
     await auth
       .login(email, password)
-      .then(() => {
-        setLoading(false)
-      })
       .catch((error) => {
         if (error.response?.data?.errors?.message) {
           setError(error.response.data.errors.message)
         }
+      })
+      .finally(() => {
         setLoading(false)
       })
   }

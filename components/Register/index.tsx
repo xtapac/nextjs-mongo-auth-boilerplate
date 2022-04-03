@@ -42,7 +42,6 @@ const Register: NextPage = () => {
       .register(email, password, password2)
       .then(() => {
         setSuccess(true)
-        setLoading(false)
       })
       .catch((error) => {
         if (error.response?.data?.errors?.message) {
@@ -56,8 +55,9 @@ const Register: NextPage = () => {
           const errors = fields.reduce((a, v) => ({ ...a, [v.field]: v.message }), {})
           setErrorFields({ ...defaultErrorFields, ...errors })
         }
+      })
+      .finally(() => {
         setLoading(false)
-        //
       })
   }
 
