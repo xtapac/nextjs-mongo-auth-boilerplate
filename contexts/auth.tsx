@@ -64,7 +64,7 @@ export const AuthProvider = ({ token, initialUserValue, children }: any) => {
 
     if (isLoading || isAuthenticated) return
 
-    const route = router.route
+    const route = router.asPath
 
     router.push(`/login?redirect=${encodeURIComponent(route)}`)
   }, [isAuthenticated, isLoading, children.type.requiresAuth])
