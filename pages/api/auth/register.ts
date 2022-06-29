@@ -34,6 +34,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ApiResponse<Api
       serialize('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        path: '/',
       })
     )
     return res.status(200).json({ data: userData })
