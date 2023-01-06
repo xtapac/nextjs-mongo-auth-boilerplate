@@ -10,6 +10,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ApiResponse<unk
 
   try {
     const { refreshToken } = req.cookies
+    if (!refreshToken) {
+      throw ApiError.UnauthorizedError('Failed authorization')
+    }
     await userService.logout(refreshToken)
     res.setHeader('Set-Cookie', serialize('refreshToken', '', { maxAge: -1, path: '/' }))
     return res.status(200).json({ data: {} })

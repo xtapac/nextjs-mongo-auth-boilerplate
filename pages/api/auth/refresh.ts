@@ -10,6 +10,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ApiResponse<Api
 
   try {
     const { refreshToken } = req.cookies
+    if (!refreshToken) {
+      throw ApiError.UnauthorizedError('Failed authorization')
+    }
     const userData = await userService.refresh(refreshToken)
     res.setHeader(
       'Set-Cookie',
