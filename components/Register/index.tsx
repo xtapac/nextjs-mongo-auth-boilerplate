@@ -84,10 +84,8 @@ const Register: NextPage = () => {
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Or{' '}
-          <Link href="/login">
-            <a className="font-medium text-indigo-600 hover:text-indigo-500">
-              login into an existing one
-            </a>
+          <Link href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+            login into an existing one
           </Link>
         </p>
       </div>

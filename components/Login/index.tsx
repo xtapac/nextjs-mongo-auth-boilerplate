@@ -52,10 +52,8 @@ const Login: NextPage = () => {
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or{' '}
-            <Link href="/register">
-              <a className="font-medium text-indigo-600 hover:text-indigo-500">
+            <Link href="/register"  className="font-medium text-indigo-600 hover:text-indigo-500">
                 register in 30 seconds
-              </a>
             </Link>
           </p>
         </div>
