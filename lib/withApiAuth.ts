@@ -26,6 +26,22 @@ const withApiAuth =
 
       return handler(req, res)
     } catch (e) {
+      try {
+        const { refreshToken } = req.cookies
+        if (refreshToken) {
+          const userData = await tokenService.validateRefreshToken(refreshToken)
+          if (!userData) {
+            throw ApiError.UnauthorizedError('Failed authorization')
+          }
+
+          req.user = { id: userData.userid }
+
+          return handler(req, res)
+        }
+      } catch {
+        // Fallback to fail authrozation
+      }
+
       if (e instanceof ApiError) {
         return res.status(e.status).json({ errors: { message: e.message, fields: e.fields } })
       }
